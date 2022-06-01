@@ -58,7 +58,7 @@ visibility: visible !important;
 
 .nav-items{
   /* visibility: hidden; */
-  isplay: flex;
+ display: flex;
 flex-direction: column;
 color: whitesmoke;
 height: 30rem;
@@ -283,7 +283,7 @@ ul {
 }
 
 .active {
-  color: var(--primary-500);
+  color: white
 }
 .products article {
   margin-bottom: 1rem;
