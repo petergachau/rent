@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Navii/static/css/main.4a7eaf84.css",
-    "main.js": "/Navii/static/js/main.96f3e31a.js",
-    "index.html": "/Navii/index.html",
-    "main.4a7eaf84.css.map": "/Navii/static/css/main.4a7eaf84.css.map",
-    "main.96f3e31a.js.map": "/Navii/static/js/main.96f3e31a.js.map"
+    "main.css": "/static/css/main.4a7eaf84.css",
+    "main.js": "/static/js/main.96f3e31a.js",
+    "index.html": "/index.html",
+    "main.4a7eaf84.css.map": "/static/css/main.4a7eaf84.css.map",
+    "main.96f3e31a.js.map": "/static/js/main.96f3e31a.js.map"
   },
   "entrypoints": [
     "static/css/main.4a7eaf84.css",
