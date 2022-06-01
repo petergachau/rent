@@ -1,42 +1,48 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import Error from './pages/Error';
-import SharedRoutes from './pages/SharedRoutes';
+import SharedLayout from './pages/SharedLayout';
 import SingleProduct from './pages/SingleProduct';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import ProtectedRoutes from './pages/ProtectedRoutes';
-
-
+import ProtectedRoute from './pages/ProtectedRoute';
+import SharedProductLayout from './pages/SharedProductLayout';
+const getLocalStorage = () => {
+  let user = localStorage.getItem('user');
+  if (user) {
+    return (user = JSON.parse(localStorage.getItem('user')));
+  } else {
+    return user;
+  }
+};
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getLocalStorage(null));
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
   return (
     <BrowserRouter>
+   
       <Routes>
-        <Route path='/' element={<SharedRoutes />}>
-          <Route index element={
-          <ProtectedRoutes>
-            <Home user={user} />
-            </ProtectedRoutes>} />
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<Home />} />
           <Route path='about' element={<About />} />
 
-          <Route path='products' element={<Products/>}>
+          <Route path='products' element={<SharedProductLayout />}>
             <Route index element={<Products />} />
             <Route path=':productId' element={<SingleProduct />} />
           </Route>
 
           <Route path='login' element={<Login setUser={setUser}></Login>} />
           <Route
-            path='dashboard'
+            path='/dashboard'
             element={
-              
+              <ProtectedRoute user={user}>
                 <Dashboard user={user} />
-              
-                
-              
+              </ProtectedRoute>
             }
           />
           <Route path='*' element={<Error />} />
